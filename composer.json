@@ -4,7 +4,7 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "php": ">=7.2.5",
+        "php": "~8.0.12",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "composer/package-versions-deprecated": "1.11.99.4",
@@ -55,6 +55,11 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "rector": [
+            "vendor/bin/simple-phpunit install",
+            "bin/console cache:clear --env dev",
+            "vendor/bin/rector process --dry-run"
         ]
     },
     "conflict": {
